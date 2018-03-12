@@ -31,6 +31,19 @@ class JSONConverterUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        
+        let app = XCUIApplication()
+        let jsonconverterWindow = app.windows["JSONConverter"]
+        jsonconverterWindow.click()
+        
+        let textView = jsonconverterWindow.children(matching: .scrollView).element(boundBy: 0).children(matching: .textView).element
+        textView.click()
+        let testStr = """
+                    {"name": "张三", "age": 12, "isRich": true, "card": {"num": 123423423, "title": "中国人民银行"}}
+                    """
+
+        textView.typeText(testStr)
     }
     
 }
